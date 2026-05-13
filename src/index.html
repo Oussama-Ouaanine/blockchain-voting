@@ -3,43 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blockchain Voting DApp</title>
+    <title>National E-Voting Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🗳️ Electronic Voting</h1>
+        <header class="header-banner">
+            <div class="logo-wrapper">
+                <span class="logo-icon">🏛️</span>
+            </div>
+            <h1>National <span class="text-highlight">E-Voting</span> Portal</h1>
+            <p class="subtitle">Secure, Transparent, and Official Electoral Process.</p>
+        </header>
         
-        <div id="wallet-section">
-            <button id="connect-btn" onclick="App.connectWallet()">Connect Wallet</button>
-            <p id="account-address">Not connected</p>
+        <div id="wallet-section" class="wallet-container card-panel">
+            <div class="instruction-text">To participate in the election, please verify your identity using your secure digital wallet.</div>
+            <button id="connect-btn" class="btn-primary" onclick="App.connectWallet()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 7H5C3.89543 7 3 7.89543 3 9V15C3 16.1046 3.89543 17 5 17H19C20.1046 17 21 16.1046 21 15V9C21 7.89543 20.1046 7 19 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 12H16.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Connect Voter Wallet
+            </button>
+            <p id="account-address" class="hidden-address">Not authenticated</p>
         </div>
 
         <div id="voting-section" style="display: none;">
-            <h2>Candidates</h2>
-            <table id="candidates-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Votes</th>
-                    </tr>
-                </thead>
-                <tbody id="candidates-list">
-                    <!-- Candidates will be loaded here -->
-                </tbody>
-            </table>
+            <div class="section-title">
+                <h2>Official Candidates</h2>
+                <div class="live-indicator">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="currentColor"/>
+                    </svg>
+                    Secure Connection
+                </div>
+            </div>
             
-            <hr>
+            <div id="candidates-grid" class="candidates-grid">
+                <!-- Javascript will inject candidate cards here -->
+            </div>
             
-            <h3>Cast Your Vote</h3>
-            <form id="vote-form" onsubmit="App.castVote(); return false;">
-                <select id="candidate-select" required>
-                    <option value="" disabled selected>Select a candidate...</option>
-                </select>
-                <button type="submit">Vote</button>
-            </form>
-            <p id="voting-status"></p>
+            <div class="vote-area card-panel">
+                <div class="vote-header">
+                    <h3>Official Ballot</h3>
+                    <p class="vote-instruction">Please select your preferred candidate carefully. This action cannot be undone.</p>
+                </div>
+                <form id="vote-form" onsubmit="App.castVote(); return false;">
+                    <div class="form-group">
+                        <div class="select-wrapper">
+                            <select id="candidate-select" required>
+                                <option value="" disabled selected>Select a candidate from the dropdown...</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary submit-btn" id="vote-btn">Cast Official Vote</button>
+                    </div>
+                </form>
+                <p id="voting-status"></p>
+            </div>
         </div>
         
     </div>

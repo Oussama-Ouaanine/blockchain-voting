@@ -57,7 +57,7 @@ const App = {
     },
 
     render: async function() {
-        const candidatesList = document.getElementById("candidates-list");
+        const candidatesList = document.getElementById("candidates-grid");
         const candidateSelect = document.getElementById("candidate-select");
         const statusEl = document.getElementById("voting-status");
 
@@ -84,12 +84,16 @@ const App = {
                 const name = candidate[1];
                 const voteCount = candidate[2].toNumber ? candidate[2].toNumber() : candidate[2];
 
-                const row = `<tr>
-                    <td>${id}</td>
-                    <td>${name}</td>
-                    <td>${voteCount}</td>
-                </tr>`;
-                candidatesList.innerHTML += row;
+                const cardHtml = `
+                <div class="candidate-card">
+                    <div class="candidate-id">ID: #${id}</div>
+                    <div class="candidate-name">${name}</div>
+                    <div class="vote-badge">
+                        <span class="vote-count">${voteCount}</span> Votes
+                    </div>
+                </div>
+                `;
+                candidatesList.innerHTML += cardHtml;
 
                 const option = `<option value="${id}">${name}</option>`;
                 candidateSelect.innerHTML += option;
