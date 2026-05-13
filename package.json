@@ -1,0 +1,13 @@
+{
+  "name": "blockchain-voting",
+  "version": "1.0.0",
+  "description": "Blockchain Electronic Voting DApp",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2",
+    "web3": "^1.8.2"
+  }
+}

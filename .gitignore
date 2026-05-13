@@ -1,0 +1,5 @@
+node_modules/
+build/
+ganache.log
+.DS_Store
+.env
