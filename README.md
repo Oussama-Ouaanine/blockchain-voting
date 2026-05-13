@@ -1,66 +1,72 @@
-# 🗳️ Blockchain Voting DApp
+# 🗳️ Blockchain Electronic Voting DApp
 
-Welcome to the Blockchain Electronic Voting DApp! The application framework, smart contracts, and frontend have all been fully scaffolded for you.
+![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white)
+![Solidity](https://img.shields.io/badge/Solidity-%23363636.svg?style=for-the-badge&logo=solidity&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Web3.js](https://img.shields.io/badge/Web3.js-F16822?style=for-the-badge&logo=javascript&logoColor=white)
 
-Follow these instructions to spin up the local blockchain, deploy the contract, and test the app.
+A decentralized application (DApp) for secure, transparent, and tamper-proof electronic voting, built on a local Ethereum blockchain using Solidity, Truffle, Ganache, and Web3.js. 
 
-## Prerequisites
-- **Ganache**: [Download and install Ganache](https://trufflesuite.com/ganache/)
-- **MetaMask**: Install the [MetaMask browser extension](https://metamask.io/)
+## 🚀 Features
+
+- **Smart Contract Driven**: Voting logic is executed autonomously on the blockchain.
+- **One Vote per Address**: The smart contract mathematically ensures no wallet can vote twice.
+- **MetaMask Integration**: Connects via Web3.js to authenticate users securely.
+- **Real-Time Updates**: Immediate reflection of the vote counts straight from the blockchain ledger.
 
 ---
 
-## 🚀 How to Run the Project
+## 🛠️ Technology Stack
 
-### Step 1: Start Your Local Blockchain (Ganache)
-1. Open the **Ganache** desktop application.
-2. Click **"New Workspace"** (or Quickstart).
-3. Under the **Server** tab, ensure the **Port Number** is set to `7545`.
-4. Click **Save and Start**.
-5. *Ganache will generate 10 test accounts with 100 ETH each. Leave this running.*
+- **Blockchain**: Ganache (Local Ethereum Testnet)
+- **Smart Contracts**: Solidity (^0.8.0)
+- **Framework**: Truffle Suite
+- **Backend / Serveur**: Node.js & Express
+- **Frontend**: Vanilla HTML / CSS / JS + Web3.js
+- **Wallet**: MetaMask
 
-### Step 2: Deploy the Smart Contracts
-Open a terminal in the `blockchain-voting` folder (where this README is located) and run the following command to deploy the smart contract to Ganache:
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Prerequisites
+- [Node.js](https://nodejs.org/) installed
+- [MetaMask](https://metamask.io/) extension installed in your browser
+
+### 2. Install Project Dependencies
 ```bash
+git clone <your-repository-url>
+cd blockchain-voting
+npm install
+```
+
+### 3. Start Local Blockchain (Ganache)
+Open a terminal and start the local Ganache network:
+```bash
+npx ganache --port 7545 --chain.chainId 1337 --chain.networkId 1337
+```
+
+### 4. Compile and Deploy Smart Contracts
+Open a new terminal in the project directory:
+```bash
+npx truffle compile
 npx truffle migrate --network development
 ```
-*(Note: I have already compiled the contracts for you using `npx truffle compile`. If you make changes to `Election.sol` in the future, simply re-run `npx truffle compile` before migrating).*
 
-### Step 3: Start the Web Server
-In the same terminal (inside the `blockchain-voting` folder), start the Node.js server:
+### 5. Run the Application
 ```bash
 npm start
 ```
-The server will start running at **http://localhost:3000**.
-
-### Step 4: Configure MetaMask
-You need to connect MetaMask to your local Ganache blockchain so you can interact with the app.
-1. Open the MetaMask extension in your browser.
-2. Click the network dropdown at the top left and select **Add network**.
-3. Scroll down and click **Add a network manually**.
-4. Enter the following details:
-   - **Network Name**: Ganache Local
-   - **New RPC URL**: `http://127.0.0.1:7545`
-   - **Chain ID**: `1337` (Try `5777` if `1337` gives an error)
-   - **Currency Symbol**: `ETH`
-5. Click **Save**.
-
-### Step 5: Import a Test Account
-1. In Ganache, look at the first account in the list and click the **Key icon (🔑)** on the far right.
-2. Copy the **Private Key**.
-3. In MetaMask, click on the **Account icon** (or dropdown) at the top, and select **Import Account**.
-4. Paste the private key you just copied and click **Import**.
-5. *You should now see an account with ~100 ETH!*
-
-### Step 6: Vote!
-1. Open [http://localhost:3000](http://localhost:3000) in your browser.
-2. Click **Connect Wallet** (Approve the connection in MetaMask).
-3. The DApp will load the active candidates from the blockchain.
-4. Select a candidate, click **Vote**, and confirm the transaction in MetaMask!
-5. After the transaction finishes, the page will update and the vote tally will increase.
+The DApp will be live at `http://localhost:3000`.
 
 ---
 
-### Troubleshooting
-- **RPC Error / Nonce too high**: This happens if you restart Ganache without clearing MetaMask data. In MetaMask go to: *Settings > Advanced > Clear activity tab data*.
-- **Contract not deployed**: Make sure you ran `npx truffle migrate` *after* Ganache was running.
+## 🦊 Connecting MetaMask
+
+1. Add a new network in MetaMask:
+   - **RPC URL**: `http://127.0.0.1:7545`
+   - **Chain ID**: `1337`
+   - **Symbol**: `ETH`
+2. Import a test account into MetaMask using one of the Private Keys generated by your Ganache local blockchain.
+3. Refresh the web page and click **Connect Wallet**.
+4. Vote for your favorite candidate!
